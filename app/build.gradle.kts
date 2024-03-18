@@ -47,4 +47,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     //lottie
     implementation (libs.lottie)
+
+    //SQLite
+    implementation ("androidx.sqlite:sqlite:2.4.0")
+    implementation ("androidx.sqlite:sqlite-framework:2.4.0")
 }

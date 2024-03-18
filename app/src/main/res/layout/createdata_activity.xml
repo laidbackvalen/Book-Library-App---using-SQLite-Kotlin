@@ -6,9 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".CreateDataActivity">
+    tools:context=".sqlite.crud.CreateDataActivity">
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="fitXY"
@@ -20,44 +21,101 @@
         app:lottie_rawRes="@raw/lottiecreatemain2" />
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView2"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="fitXY"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/lottiecreatemain" />
 
-    <TextView
-        android:id="@+id/textView"
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="52dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:text="@string/app_name"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEnterTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="180dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         app:boxStrokeColor="@color/black"
         app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleCreateActTxtInEdTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:hint="Enter" />
+            android:hint="Enter Title"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEnterAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textInputEnterTitle"
+        app:layout_constraintStart_toStartOf="@+id/textInputEnterTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEnterTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/authorCreateActTxtInEdTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Author"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEnterPage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textInputEnterAuthor"
+        app:layout_constraintStart_toStartOf="@+id/textInputEnterAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEnterAuthor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pageCreateActTxtInEdTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Pages"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/addButtonCreateActivity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#000000"
+        android:text="Add"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/textInputEnterPage"
+        app:layout_constraintStart_toStartOf="@+id/textInputEnterPage"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEnterPage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
