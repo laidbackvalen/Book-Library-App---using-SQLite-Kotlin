@@ -2,6 +2,7 @@ package com.example.sqlitedatabasekotlin.sqlite.databasehelpter
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
@@ -11,9 +12,9 @@ import android.widget.Toast
 //SQLiteOpenHelper - This class will handle database creation, version management, and provide access to the database.
 class MyDatabaseHelper : SQLiteOpenHelper {
 
-    lateinit var context : Context
+    lateinit var context: Context
 
-    companion object {
+    companion object {  //Static variables
         val DATABASE_NAME = "BookLibrary.db"
         val DATABASE_VERSION = 1
 
@@ -67,7 +68,31 @@ class MyDatabaseHelper : SQLiteOpenHelper {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show()
+
         }
 
+    }
+    //Traverse means -travel accross or travel through
+    //A database cursor is a mechanism that allows you to traverse through the records in a database.
+    //It's a database-level object that acts as a pointer to a result set of a query,
+    //allowing you to move through the rows, fetch data, and optionally modify or delete it.
+    //This allows you to process the data row by row, rather than as a whole set.
+    //For example, you can use a cursor to perform logic or calculations on each record,
+    //or to call a stored procedure or function for each record.
+
+    fun readAllData(): Cursor? {
+        val query = "SELECT * FROM $TABLE_NAME";
+        val db: SQLiteDatabase = this.readableDatabase  // It retrieves all data from a specified table (tableName) and returns a Cursor object representing the result set.
+        var cursor: Cursor? = null
+
+        if (db!=null){
+            cursor = db.rawQuery(query, null)  //This method is called on an instance of SQLiteDatabase (db in this case) to execute a raw SQL query.
+                                                          //The first parameter query is a string containing the SQL query to be executed.
+                                                          //The second parameter is an array of strings representing the query arguments,
+                                                          //which can be null if the SQL query doesn't have any arguments.
+
+        //rawQuery() - This method allows you to execute any SQL query directly without the need for predefined selection, update, deletion, or insertion methods.
+        }
+        return cursor
     }
 }

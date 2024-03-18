@@ -1,13 +1,16 @@
 package com.example.sqlitedatabasekotlin.sqlite.crud
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sqlitedatabasekotlin.R
+import com.example.sqlitedatabasekotlin.activities.MainActivity
 import com.example.sqlitedatabasekotlin.sqlite.databasehelpter.MyDatabaseHelper
 import com.google.android.material.textfield.TextInputEditText
 
@@ -23,13 +26,21 @@ class CreateDataActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.addButtonCreateActivity).setOnClickListener {
-            val title = findViewById<TextInputEditText>(R.id.titleCreateActTxtInEdTxt).text.toString()
-            val author = findViewById<TextInputEditText>(R.id.authorCreateActTxtInEdTxt).text.toString()
-            val pages = findViewById<TextInputEditText>(R.id.pageCreateActTxtInEdTxt).text.toString()
+            val title =
+                findViewById<TextInputEditText>(R.id.titleCreateActTxtInEdTxt).text.toString()
+            val author =
+                findViewById<TextInputEditText>(R.id.authorCreateActTxtInEdTxt).text.toString()
+            val pages =
+                findViewById<TextInputEditText>(R.id.pageCreateActTxtInEdTxt).text.toString()
 
             val myDatabaseHelper = MyDatabaseHelper(this)
             myDatabaseHelper.addBook(title, author, pages)
 
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+           finish()
+
         }
     }
+
 }

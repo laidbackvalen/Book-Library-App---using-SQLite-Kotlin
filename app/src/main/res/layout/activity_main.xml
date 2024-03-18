@@ -24,6 +24,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"

@@ -15,8 +15,6 @@
         tools:targetApi="31">
         <activity
             android:name=".sqlite.crud.CreateDataActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Add Book"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
