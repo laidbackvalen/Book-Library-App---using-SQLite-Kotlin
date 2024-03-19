@@ -1,12 +1,14 @@
 package com.example.sqlitedatabasekotlin.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sqlitedatabasekotlin.R
+import com.example.sqlitedatabasekotlin.sqlite.crud.UpdateDataActivity
 
 class CustomAdapter(
     val context: Context, val book_id: ArrayList<String>,
@@ -35,6 +37,13 @@ class CustomAdapter(
         holder.textbookAuthor.text = book_author.get(position)
         holder.textbookPages.text = book_pages.get(position)
 
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, UpdateDataActivity::class.java)
+            intent.putExtra("title", book_title.get(holder.adapterPosition))
+            intent.putExtra("author", book_author.get(holder.adapterPosition))
+            intent.putExtra("pages", book_pages.get(holder.adapterPosition))
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

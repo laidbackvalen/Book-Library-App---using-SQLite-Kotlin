@@ -9,14 +9,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.airbnb.lottie.LottieAnimationView
 import com.example.sqlitedatabasekotlin.R
 import com.example.sqlitedatabasekotlin.adapter.CustomAdapter
 import com.example.sqlitedatabasekotlin.sqlite.crud.CreateDataActivity
 import com.example.sqlitedatabasekotlin.sqlite.databasehelpter.MyDatabaseHelper
 
-class MainActivity : AppCompatActivity() {
+class MainActivity_ReadData : AppCompatActivity() {
     private lateinit var myDatabaseHelper: MyDatabaseHelper
 
     private lateinit var book_id: ArrayList<String>

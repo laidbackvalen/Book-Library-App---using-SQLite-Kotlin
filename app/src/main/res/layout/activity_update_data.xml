@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".sqlite.crud.CreateDataActivity">
+    tools:context=".sqlite.crud.UpdateDataActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
@@ -32,21 +32,21 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/lottiecreatemain" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="52dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:text="@string/app_name"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
-<!--        android:textColor="@color/black"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:layout_marginTop="52dp"-->
+    <!--        android:layout_marginEnd="20dp"-->
+    <!--        android:text="@string/app_name"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textAppearance="@style/TextAppearance.AppCompat.Display2"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputEnterTitle"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/titleCreateActTxtInEdTxt"
+            android:id="@+id/updatetitleCreateActTxtInEdTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Title"
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputEnterTitle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/authorCreateActTxtInEdTxt"
+            android:id="@+id/updateauthorCreateActTxtInEdTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Author"
@@ -100,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputEnterAuthor">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pageCreateActTxtInEdTxt"
+            android:id="@+id/updatepageCreateActTxtInEdTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Pages"
@@ -108,14 +108,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/addButtonCreateActivity"
+        android:id="@+id/updateButtonCreateActivity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#000000"
-        android:text="Add Book"
+        android:text="Update Record"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/textInputEnterPage"
         app:layout_constraintStart_toStartOf="@+id/textInputEnterPage"
         app:layout_constraintTop_toBottomOf="@+id/textInputEnterPage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
