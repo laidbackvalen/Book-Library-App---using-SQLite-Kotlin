@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import java.sql.Array
 
 //This java class is representing the SQLite Database Schema
 
@@ -80,19 +81,48 @@ class MyDatabaseHelper : SQLiteOpenHelper {
     //For example, you can use a cursor to perform logic or calculations on each record,
     //or to call a stored procedure or function for each record.
 
+    //Read //Retrieve Data
     fun readAllData(): Cursor? {
         val query = "SELECT * FROM $TABLE_NAME";
-        val db: SQLiteDatabase = this.readableDatabase  // It retrieves all data from a specified table (tableName) and returns a Cursor object representing the result set.
+        val db: SQLiteDatabase =
+            this.readableDatabase  // It retrieves all data from a specified table (tableName) and returns a Cursor object representing the result set.
         var cursor: Cursor? = null
 
-        if (db!=null){
-            cursor = db.rawQuery(query, null)  //This method is called on an instance of SQLiteDatabase (db in this case) to execute a raw SQL query.
-                                                          //The first parameter query is a string containing the SQL query to be executed.
-                                                          //The second parameter is an array of strings representing the query arguments,
-                                                          //which can be null if the SQL query doesn't have any arguments.
+        if (db != null) {
+            cursor = db.rawQuery(
+                query,
+                null
+            )  //This method is called on an instance of SQLiteDatabase (db in this case) to execute a raw SQL query.
+            //The first parameter query is a string containing the SQL query to be executed.
+            //The second parameter is an array of strings representing the query arguments,
+            //which can be null if the SQL query doesn't have any arguments.
 
-        //rawQuery() - This method allows you to execute any SQL query directly without the need for predefined selection, update, deletion, or insertion methods.
+            //rawQuery() - This method allows you to execute any SQL query directly without the need for predefined selection, update, deletion, or insertion methods.
         }
         return cursor
+    }
+
+
+
+    //Update Data
+    fun updateData(row_id:String, title: String, author: String, page: String) {
+
+        val db: SQLiteDatabase = this.writableDatabase
+        var contentValues: ContentValues = ContentValues()
+        contentValues.put(COLUMN_TITLE, title)  // Replace "column_name" with the name of the column you want to update
+        contentValues.put(COLUMN_AUTHOR, author)
+        contentValues.put(COLUMN_PAGES, page)
+
+        val whereClause = "id=?" // Specify the condition for updating
+        val whereArgs  = arrayOf(row_id.toString()) // Provide the value for the placeholder in the WHERE clause
+
+        val result = db.update(TABLE_NAME, contentValues, whereClause, whereArgs)
+
+        if (result.toInt() == -1) {
+            Toast.makeText(context, "Update Failed", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Updated Successfully", Toast.LENGTH_SHORT).show()
+
+        }
     }
 }

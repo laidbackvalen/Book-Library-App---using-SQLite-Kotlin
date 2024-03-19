@@ -39,6 +39,7 @@ class CustomAdapter(
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, UpdateDataActivity::class.java)
+            intent.putExtra("id", book_id.get(holder.adapterPosition))
             intent.putExtra("title", book_title.get(holder.adapterPosition))
             intent.putExtra("author", book_author.get(holder.adapterPosition))
             intent.putExtra("pages", book_pages.get(holder.adapterPosition))
