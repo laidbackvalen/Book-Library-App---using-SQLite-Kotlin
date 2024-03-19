@@ -51,4 +51,5 @@ dependencies {
     //SQLite
     implementation ("androidx.sqlite:sqlite:2.4.0")
     implementation ("androidx.sqlite:sqlite-framework:2.4.0")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
 }

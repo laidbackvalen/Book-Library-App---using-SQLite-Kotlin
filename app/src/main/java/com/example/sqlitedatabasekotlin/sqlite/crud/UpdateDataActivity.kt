@@ -3,7 +3,6 @@ package com.example.sqlitedatabasekotlin.sqlite.crud
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +14,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class UpdateDataActivity : AppCompatActivity() {
     lateinit var intentIdFromAdapter: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,10 +34,10 @@ class UpdateDataActivity : AppCompatActivity() {
             val updatedAuthor = findViewById<TextInputEditText>(R.id.updateauthorCreateActTxtInEdTxt).text.toString()
             val updatedPages = findViewById<TextInputEditText>(R.id.updatepageCreateActTxtInEdTxt).text.toString()
 
-            //
             val myDatabaseHelper = MyDatabaseHelper(this)
             //calling ypdate method using instance of MydatabaseHelper class
             myDatabaseHelper.updateData(intentIdFromAdapter, updatedTitle, updatedAuthor, updatedPages)
+            finish()
         }
     }
 

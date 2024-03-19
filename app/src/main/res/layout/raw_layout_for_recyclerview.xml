@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="#65A3BACC"
+    android:background="#0FA3BACC"
+    android:id="@+id/constraintLayoutRawRecycler"
     android:layout_height="75dp">
 
     <View
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:elevation="10dp"
+        android:layout_margin="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
        android:background="@drawable/view_bg"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,11 +33,13 @@
 
     <TextView
         android:id="@+id/bookTitleRawLayout"
-        android:layout_width="230dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="Book Title"
         android:elevation="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/bookAuthorRawLayout"
         app:layout_constraintStart_toEndOf="@+id/bookIdRawlayout"
@@ -48,6 +52,8 @@
         android:layout_height="wrap_content"
         android:text="Book Author"
         android:elevation="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/bookIdRawlayout"
         app:layout_constraintEnd_toEndOf="@+id/bookTitleRawLayout"
@@ -60,11 +66,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:inputType="number"
         android:text="120"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@color/black"
         android:elevation="10dp"
-        android:gravity="center"
+        android:gravity="end"
         app:layout_constraintEnd_toEndOf="@+id/viewRawLayout"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/deleteIconRawLayout"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:elevation="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/delete"
+        app:layout_constraintBottom_toBottomOf="@+id/bookAuthorRawLayout"
+        app:layout_constraintEnd_toEndOf="@+id/bookPagesRawLayout"
+
+        app:layout_constraintTop_toBottomOf="@+id/bookPagesRawLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

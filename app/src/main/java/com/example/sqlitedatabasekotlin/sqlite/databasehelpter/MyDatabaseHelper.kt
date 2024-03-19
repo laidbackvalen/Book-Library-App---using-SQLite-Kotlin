@@ -73,6 +73,8 @@ class MyDatabaseHelper : SQLiteOpenHelper {
         }
 
     }
+
+
     //Traverse means -travel accross or travel through
     //A database cursor is a mechanism that allows you to traverse through the records in a database.
     //It's a database-level object that acts as a pointer to a result set of a query,
@@ -80,6 +82,7 @@ class MyDatabaseHelper : SQLiteOpenHelper {
     //This allows you to process the data row by row, rather than as a whole set.
     //For example, you can use a cursor to perform logic or calculations on each record,
     //or to call a stored procedure or function for each record.
+
 
     //Read //Retrieve Data
     fun readAllData(): Cursor? {
@@ -124,5 +127,31 @@ class MyDatabaseHelper : SQLiteOpenHelper {
             Toast.makeText(context, "Updated Successfully", Toast.LENGTH_SHORT).show()
 
         }
+    }
+
+
+
+    //Delet One at a time
+    fun deleteData(row_id:String){
+        val db: SQLiteDatabase = this.writableDatabase
+        val whereClause = "id=?" // Specify the condition for updating
+        val whereArgs  = arrayOf(row_id.toString()) // Provide the value for the placeholder in the WHERE clause
+
+        val result = db.delete(TABLE_NAME, whereClause, whereArgs)
+
+        if (result.toInt() == -1) {
+            Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_SHORT).show()
+
+        }
+    }
+
+
+
+    //Delete All data
+    fun deleteAllData(){
+        val db: SQLiteDatabase = this.writableDatabase
+        db.execSQL("DELETE FROM $TABLE_NAME ")
     }
 }

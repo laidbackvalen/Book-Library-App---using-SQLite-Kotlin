@@ -1,7 +1,15 @@
 package com.example.sqlitedatabasekotlin.activities
 
+import android.app.Activity
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.Gravity
+import android.view.View
+import android.view.animation.Animation
+import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -40,7 +48,15 @@ class MainActivity_ReadData : AppCompatActivity() {
             startActivity(intent)
 
         }
+        findViewById<LottieAnimationView>(R.id.noDataLottieMainActivity).setOnClickListener {
+            val intent = Intent(applicationContext, CreateDataActivity::class.java)
+            startActivity(intent)
 
+        }
+        findViewById<TextView>(R.id.moreIconMainActivity).setOnClickListener{
+        myDatabaseHelper.deleteAllData()
+            recreate()
+        }
 
         myDatabaseHelper = MyDatabaseHelper(this)
         book_id = ArrayList()
@@ -53,16 +69,22 @@ class MainActivity_ReadData : AppCompatActivity() {
 
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerViewMainActivity)
 
-        customAdapter = CustomAdapter(this, book_id, book_title, book_author, book_page)
+        customAdapter = CustomAdapter(this, this, book_id, book_title, book_author, book_page)
         recyclerView.adapter = customAdapter
 
 
         val layoutType = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutType
 
+    }
 
 
-
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            recreate()
+        }
     }
 
     private fun storeDataInArrays() {
@@ -70,6 +92,9 @@ class MainActivity_ReadData : AppCompatActivity() {
         if (cursor != null) {
             if (cursor.count == 0) {
                 Toast.makeText(this, "No data Found", Toast.LENGTH_SHORT).show()
+                val a = findViewById<LottieAnimationView>(R.id.noDataLottieMainActivity)
+                a.visibility = View.VISIBLE
+                findViewById<TextView>(R.id.moreIconMainActivity).visibility =View.INVISIBLE
             } else {
                 while (cursor.moveToNext()) { //moveToNext() method is used to move the cursor to the next row in the result set.
                     //it returns true if the cursor successfully moves to the next row, and false if there are no more rows in the result set.
